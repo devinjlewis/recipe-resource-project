@@ -27,6 +27,6 @@ Find the suitable guide that matches your environment to get started smoothly:
 
 ---
 
-## Trello: [here](https://trello.com/b/wDPg51VT/single-resource-app)
+> Trello: [here](https://trello.com/b/wDPg51VT/single-resource-app)
 
 ---
