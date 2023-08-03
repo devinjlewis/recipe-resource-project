@@ -2,7 +2,7 @@
 
 ### Description:
 
-> This project is a web application that allows users to search for delicious recipes or unleash your inner chef by creating, editing, and deleting recipes through our server.
+> This project is a web application that allows users to search for delicious recipes or unleash their inner chef by creating, editing, and deleting recipes through our server.
 
 ---
 
@@ -15,7 +15,7 @@ As a user I can:
 
 ---
 
-> This project is a collaboration of [Nicole R.](https://github.com/Nicolercc) [Devin L.](https://github.com/devinjlewis)
+> This project is a collaboration of [Nicole R.](https://github.com/Nicolercc) and [Devin L.](https://github.com/devinjlewis)
 
 ### Installation
 
@@ -28,3 +28,5 @@ Find the suitable guide that matches your environment to get started smoothly:
 ---
 
 ## Trello: [here](https://trello.com/b/wDPg51VT/single-resource-app)
+
+---
