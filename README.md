@@ -27,7 +27,7 @@ Find the suitable guide that matches your environment to get started smoothly:
 
 ---
 
-> Trello: [here](https://trello.com/b/wDPg51VT/single-resource-app)
+> [Trello](https://trello.com/b/wDPg51VT/single-resource-app)
 
 > [Recipe App Diagram](https://drive.google.com/file/d/1rnzNBjb1IX9uF57ZThXL9b3MyV0_zasv/view)
 
