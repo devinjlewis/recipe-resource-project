@@ -1,6 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const { getAllRecipes, getSingleRecipe } = require("../queries/recipes");
+
+const {
+  getAllRecipes,
+  getSingleRecipe,
+  createRecipe,
+  deleteRecipe,
+  updateRecipe,
+} = require("../queries/recipes");
 
 const {
   checkName,

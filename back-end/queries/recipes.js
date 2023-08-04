@@ -31,13 +31,13 @@ const createRecipe = async (recipe) => {
       serving_size,
       date,
       instructions,
-      category,
+      category_id,
       is_favorite,
       origin,
     } = recipe;
 
-    const create = await db.one(
-      "INSERT INTO recipes (name, ingredients, prep_time, cook_time, serving_size, date, instructions, category, is_favorite, origin) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
+    const create = await db.any(
+      "INSERT INTO recipes (name, ingredients, prep_time, cook_time, serving_size, date, instructions, category_id, is_favorite, origin) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
       [
         name,
         ingredients,
@@ -46,7 +46,7 @@ const createRecipe = async (recipe) => {
         serving_size,
         date,
         instructions,
-        category,
+        category_id,
         is_favorite,
         origin,
       ]
@@ -57,7 +57,22 @@ const createRecipe = async (recipe) => {
   }
 };
 
+const deleteRecipe = async (id) => {
+  try {
+    const deletedRecipe = await db.any(
+      `DELETE FROM Recipes WHERE id = $1 RETURNING *`,
+      id
+    );
+
+    return deletedRecipe;
+  } catch (e) {
+    return e;
+  }
+};
+
 module.exports = {
   getAllRecipes,
   getSingleRecipe,
+  createRecipe,
+  deleteRecipe,
 };
