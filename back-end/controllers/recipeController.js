@@ -63,4 +63,15 @@ router.post(
   }
 );
 
+router.delete("/:id", async (req, res) => {
+  const id = req.params.id;
+  const deletedRecipe = await deleteRecipe(id);
+
+  if (deletedRecipe.length === 0) {
+    res.status(404).json({ message: "No data found!", error: true });
+  } else {
+    res.json(deletedRecipe[0]);
+  }
+});
+
 module.exports = router;
