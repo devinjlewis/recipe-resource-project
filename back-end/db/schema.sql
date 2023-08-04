@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS receipes_dev;
-CREATE DATABASE receipes_dev;
+DROP DATABASE IF EXISTS recipes_dev;
+CREATE DATABASE recipes_dev;
 
-\c receipes_dev;
+\c recipes_dev;
 CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
     name varchar(30) NOT NULL,

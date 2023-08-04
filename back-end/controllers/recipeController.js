@@ -1,66 +1,59 @@
 const express = require("express");
 const router = express.Router();
+const { getAllRecipes, getSingleRecipe } = require("../queries/recipes");
+
 const {
-    getAllSongs,
-    getSingleSong,
-    createSong,
-    deleteSong,
-    updateSong,
-} = require("../queries/songs");
-const {
-    checkName,
-    checkArtist,
-    checkBoolean,
+  checkName,
+  checkIngredients,
+  checkInteger,
+  checkInstructions,
+  checkBoolean,
 } = require("../validations/validations");
 
+//GET-All
 router.get("/", async (req, res) => {
-    const allSongs = await getAllSongs();
-    res.json(allSongs);
+  const allRecipes = await getAllRecipes();
+  res.json(allRecipes);
 });
 
+//GET-ONE
 router.get("/:id", async (req, res) => {
-    const id = req.params.id;
+  const id = req.params.id;
 
-    const song = await getSingleSong(id);
+  const Recipe = await getSingleRecipe(id);
 
-    if (song.length) {
-        res.json(song[0]);
-    } else {
-        res.status(404).json({
-            status: false,
-            message: "Song does not exist",
-        });
-    }
+  if (Recipe.length) {
+    res.json(Recipe[0]);
+  } else {
+    res.status(404).json({
+      status: false,
+      message: "Recipe does not exist",
+    });
+  }
 });
-router.post("/", checkName, checkArtist, checkBoolean, async (req, res) => {
-    const newSong = req.body;
-    const insertSong = await createSong(newSong);
-    if (insertSong.length === 0) {
-        res.status(400).json({
-            status: false,
-            message: "You cannot create an empty song",
-        });
-    } else {
-        res.json(insertSong);
-    }
-});
-router.delete("/:id", async (req, res) => {
-    const id = req.params.id;
-    const deletedSong = await deleteSong(id);
 
-    if (deletedSong.length === 0) {
-        res.status(404).json({ message: "No data found!", error: true });
+//CREATE
+router.post(
+  "/",
+  checkName,
+  checkIngredients,
+  checkInteger("prep_time"),
+  checkInteger("cook_time"),
+  checkInteger("serving_size"),
+  checkInstructions,
+  checkBoolean,
+  async (req, res) => {
+    const newRecipe = req.body;
+    const insertRecipe = await createRecipe(newRecipe);
+    if (insertRecipe.length === 0) {
+      res.status(422).json({
+        status: false,
+        message: "You cannot create an empty recipe",
+      });
     } else {
-        res.json(deletedSong[0]);
+      res.json(insertRecipe);
     }
-});
-router.put("/:id", async (req, res) => {
-    const updatedSong = await updateSong(req.body, req.params.id);
-    console.log(updatedSong);
-    if (updatedSong.length === 0) {
-        res.status(404).json({ message: "No data found!", error: true });
-    } else {
-        res.json(updatedSong[0]);
-    }
-});
+  }
+);
+
 module.exports = router;
