@@ -74,4 +74,14 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
+// router.put("/:id", async (req, res) => {
+//   const updatedRecipe = await updateRecipe(req.body, req.params.id);
+//   console.log(updatedRecipe);
+//   if (updatedRecipe.length === 0) {
+//     res.status(404).json({ message: "No data found!", error: true });
+//   } else {
+//     res.json(updatedRecipe[0]);
+//   }
+// });
+
 module.exports = router;
