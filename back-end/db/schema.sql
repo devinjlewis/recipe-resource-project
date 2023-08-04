@@ -2,6 +2,12 @@ DROP DATABASE IF EXISTS recipes_dev;
 CREATE DATABASE recipes_dev;
 
 \c recipes_dev;
+
+CREATE TABLE categories(
+    id SERIAL PRIMARY KEY,
+    category_name text not null
+);
+
 CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
     name varchar(30) NOT NULL,
@@ -11,7 +17,8 @@ CREATE TABLE recipes(
     serving_size integer,
     date date,
     instructions text,
-    category text,
+    category_id INTEGER REFERENCES categories (id)
+ ON DELETE CASCADE,
     is_favorite boolean,
     origin text
 );
