@@ -7,6 +7,8 @@ const {
   createRecipe,
   deleteRecipe,
   updateRecipe,
+  getAllCategories,
+  getRecipesByCategoryId,
 } = require("../queries/recipes");
 
 const {
@@ -72,6 +74,27 @@ router.delete("/:id", async (req, res) => {
   } else {
     res.json(deletedRecipe[0]);
   }
+});
+
+router.put("/:id", async (req, res) => {
+  const updatedRecipe = await updateRecipe(req.body, req.params.id);
+  console.log(updatedRecipe);
+  if (updatedRecipe.length === 0) {
+    res.status(404).json({ message: "No data found!", error: true });
+  } else {
+    res.json(updatedRecipe[0]);
+  }
+});
+
+router.get("/categories", async (req, res) => {
+  const allCategories = await getAllCategories();
+  res.json(allCategories);
+});
+
+router.get("/categories/:id", async (req, res) => {
+  const categoryId = req.params.id;
+  const recipesByCategory = await getRecipesByCategoryId(categoryId);
+  res.json(recipesByCategory);
 });
 
 module.exports = router;

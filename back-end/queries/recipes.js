@@ -1,5 +1,6 @@
 const db = require("../db/dbConfig");
 
+//GET ALL
 const getAllRecipes = async () => {
   try {
     const allRecipes = await db.any("SELECT * FROM recipes");
@@ -9,6 +10,7 @@ const getAllRecipes = async () => {
   }
 };
 
+//GET ONE BY :ID
 const getSingleRecipe = async (id) => {
   try {
     const SingleRecipe = await db.any(
@@ -21,6 +23,7 @@ const getSingleRecipe = async (id) => {
   }
 };
 
+//CREATE
 const createRecipe = async (recipe) => {
   try {
     const {
@@ -57,6 +60,7 @@ const createRecipe = async (recipe) => {
   }
 };
 
+//DELETE BY :ID
 const deleteRecipe = async (id) => {
   try {
     const deletedRecipe = await db.any(
@@ -70,10 +74,89 @@ const deleteRecipe = async (id) => {
   }
 };
 
+//UPDATE BY ID
+const updateRecipe = async (Recipe, id) => {
+  try {
+    const {
+      name,
+      ingredients,
+      prep_time,
+      cook_time,
+      serving_size,
+      date,
+      instructions,
+      category,
+      is_favorite,
+      origin,
+    } = Recipe;
+
+    const updateFields = {
+      name,
+      ingredients,
+      prep_time,
+      cook_time,
+      serving_size,
+      date,
+      instructions,
+      category,
+      is_favorite,
+      origin,
+    };
+    console.log(updateFields);
+    let query = "UPDATE recipes SET ";
+    let values = [];
+    let valueIndex = 1;
+
+    for (const field in updateFields) {
+      const value = updateFields[field];
+
+      if (value !== null && value !== undefined) {
+        query += `${field} = $${valueIndex}, `;
+        values.push(value);
+        valueIndex++;
+      }
+    }
+    query = query.slice(0, -2);
+
+    query += ` WHERE id = $${valueIndex++} RETURNING *`;
+
+    const updatedRecipe = await db.any(query, [...values, id]);
+
+    return updatedRecipe[0];
+  } catch (e) {
+    return e;
+  }
+};
+
+//GET ALL CATEGORIES
+const getAllCategories = async () => {
+  try {
+    const allCategories = await db.any("SELECT * FROM categories");
+    return allCategories;
+  } catch (error) {
+    return error;
+  }
+};
+
+//GET CATEGORY BY ID
+const getRecipesByCategoryId = async (categoryId) => {
+  try {
+    const recipesByCategory = await db.any(
+      "SELECT r.* FROM recipes r JOIN categories c ON r.category_id = c.id WHERE c.id = $1",
+      categoryId
+    );
+    return recipesByCategory;
+  } catch (error) {
+    return error;
+  }
+};
+
 module.exports = {
   getAllRecipes,
   getSingleRecipe,
   createRecipe,
   deleteRecipe,
-  // updateRecipe,
+  updateRecipe,
+  getAllCategories,
+  getRecipesByCategoryId,
 };
