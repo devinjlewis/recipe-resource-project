@@ -85,7 +85,7 @@ const updateRecipe = async (Recipe, id) => {
             serving_size,
             date,
             instructions,
-            category,
+            category_id,
             is_favorite,
             origin,
         } = Recipe;
@@ -98,7 +98,7 @@ const updateRecipe = async (Recipe, id) => {
             serving_size,
             date,
             instructions,
-            category,
+            category_id,
             is_favorite,
             origin,
         };
@@ -122,7 +122,7 @@ const updateRecipe = async (Recipe, id) => {
 
         const updatedRecipe = await db.any(query, [...values, id]);
 
-        return updatedRecipe[0];
+        return updatedRecipe;
     } catch (e) {
         return e;
     }

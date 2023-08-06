@@ -59,6 +59,7 @@ async function getAllCategories() {
         return e;
     }
 }
+
 async function getRecipeByCategoryId(id) {
     try {
         let result = await Axios.get(`/recipes/categories/${id}`);

@@ -6,9 +6,11 @@ import Logo from "../resources/logo.png";
 function Header() {
     return (
         <header className="d-flex align-items-center justify-content-center p-4 bg-success">
-            <img src={Logo} width="200" /> - &nbsp;
-            <Link to="/recipe"> View Recipes</Link>&nbsp;-&nbsp;
-            <Link to="/recipe/new">Create Recipe</Link>
+            <Link to="/">
+                <img src={Logo} width="200" />
+            </Link>
+            - &nbsp;
+            <Link to="/recipes/new">Create Recipe</Link>
         </header>
     );
 }

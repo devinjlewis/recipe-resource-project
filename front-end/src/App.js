@@ -13,10 +13,13 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/recipe" element={<AllRecipes />} />
-                <Route path="/recipe/new" element={<CreateRecipe />} />
-                <Route path="/recipe/:id" element={<Recipe />} />
-                <Route path="/recipe/:id/edit" element={<EditRecipe />} />
+                <Route
+                    path="/recipes/categories/:id"
+                    element={<AllRecipes />}
+                />
+                <Route path="/recipes/new" element={<CreateRecipe />} />
+                <Route path="/recipes/:id" element={<Recipe />} />
+                <Route path="/recipes/:id/edit" element={<EditRecipe />} />
             </Routes>
         </Router>
     );
