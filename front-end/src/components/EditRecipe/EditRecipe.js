@@ -48,6 +48,7 @@ function EditRecipe() {
         return (
             <select
                 name="category_id"
+                value={id}
                 onChange={(e) =>
                     setFormData((prevFormData) => ({
                         ...prevFormData,
@@ -57,11 +58,7 @@ function EditRecipe() {
             >
                 {categories.map((category) => {
                     return (
-                        <option
-                            value={category.id}
-                            key={category.id}
-                            selected={category.id === id}
-                        >
+                        <option value={category.id} key={category.id}>
                             {category.category_name}
                         </option>
                     );
