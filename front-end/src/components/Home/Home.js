@@ -5,7 +5,7 @@ import { getAllRecipesWCategory } from "../Api/Api";
 function Home() {
     const [recipes, setRecipes] = useState([]);
     const fetchData = async () => {
-        const recipe = await getAllRecipesWCategory();
+        const recipe = await getAllRecipes();
 
         setRecipes(recipe.data);
     };
@@ -36,7 +36,7 @@ function Home() {
                                         {recipe.name}
                                     </h5>
                                     <p className="card-text">
-                                        Category: {recipe.category_name}
+                                        Category: {recipe.origin}
                                     </p>
                                     <p className="card-text">
                                         Cook Time: {recipe.cook_time} minutes
