@@ -56,12 +56,12 @@ router.post(
         const newRecipe = req.body;
         const insertRecipe = await createRecipe(newRecipe);
         if (insertRecipe.length === 0) {
-            res.status(422).json({
+            return res.status(422).json({
                 status: false,
                 message: "You cannot create an empty recipe",
             });
         } else {
-            res.json(insertRecipe);
+            return res.json(insertRecipe);
         }
     }
 );
