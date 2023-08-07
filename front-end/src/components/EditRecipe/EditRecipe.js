@@ -1,7 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllCategories, getRecipeById, updateRecipeById } from "../Api/Api";
+import {
+    getAllCategories,
+    getRecipeById,
+    updateRecipeById,
+    deleteRecipeById,
+} from "../Api/Api";
 
 function EditRecipe() {
     const initialFormData = {
@@ -64,6 +69,22 @@ function EditRecipe() {
             </select>
         );
     }
+    const deleteRecipe = async (event) => {
+        try {
+            const confirmed = window.confirm(
+                "Are you sure you want to delete this recipe?"
+            );
+            if (confirmed) {
+                const response = await deleteRecipeById(id);
+                let data = response.data;
+                alert(`The recipe named ${data.name} has been deleted`);
+                navigate(`/recipes/categories/${data.category_id}`);
+            }
+        } catch (error) {
+            console.error("Error deleting recipe:", error);
+        }
+    };
+
     useEffect(() => {
         fetchData();
         fetchCategories();
@@ -158,9 +179,9 @@ function EditRecipe() {
                 <div>
                     Date:{" "}
                     <input
-                        type="text"
+                        type="date"
                         name="date"
-                        value={formData.date}
+                        value={formData.date.slice(0, 10)}
                         onChange={(e) =>
                             setFormData((prevFormData) => ({
                                 ...prevFormData,
@@ -215,6 +236,9 @@ function EditRecipe() {
                     />
                 </div>
                 <button type="submit">Submit</button>
+                <button type="button" onClick={() => deleteRecipe()}>
+                    Delete
+                </button>
                 <button
                     onClick={(e) => {
                         e.preventDefault();

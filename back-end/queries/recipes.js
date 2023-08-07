@@ -56,7 +56,8 @@ const createRecipe = async (recipe) => {
         );
         return create[0];
     } catch (error) {
-        return error;
+        alert(e.response.data.error);
+        return;
     }
 };
 

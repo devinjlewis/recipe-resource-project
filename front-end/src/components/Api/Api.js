@@ -6,7 +6,8 @@ async function getAllRecipes() {
 
         return result;
     } catch (e) {
-        return e;
+        alert(e.response.data.error);
+        return;
     }
 }
 
@@ -16,7 +17,8 @@ async function getRecipeById(id) {
 
         return result;
     } catch (e) {
-        return e;
+        alert(e.response.data.error);
+        return;
     }
 }
 
@@ -26,7 +28,8 @@ async function deleteRecipeById(id) {
 
         return result;
     } catch (e) {
-        return e;
+        alert(e.response.data.error);
+        return;
     }
 }
 
@@ -36,17 +39,17 @@ async function updateRecipeById(id, updatedRecipe) {
 
         return result;
     } catch (e) {
-        return e;
+        alert(e.response.data.error);
+        return;
     }
 }
 
 async function createRecipe(recipe) {
     try {
         let result = await Axios.post(`/recipes`, recipe);
-
         return result;
     } catch (e) {
-        return e;
+        return alert(e.response.data.error);
     }
 }
 
@@ -56,7 +59,8 @@ async function getAllCategories() {
 
         return result;
     } catch (e) {
-        return e;
+        alert(e.response.data.error);
+        return;
     }
 }
 
@@ -66,7 +70,8 @@ async function getRecipeByCategoryId(id) {
 
         return result;
     } catch (e) {
-        return e;
+        alert(e.response.data.error);
+        return;
     }
 }
 export {
