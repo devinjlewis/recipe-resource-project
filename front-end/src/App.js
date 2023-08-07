@@ -5,24 +5,24 @@ import CreateRecipe from "./components/CreateRecipe/CreateRecipe";
 import EditRecipe from "./components/EditRecipe/EditRecipe";
 import Recipe from "./components/Recipe/Recipe";
 import AllRecipes from "./components/AllRecipes/AllRecipes";
-import Header from "./components/Header/Header";
+import Nav from "./components/Nav/Nav";
+import Categories from "./components/Categories/Categories";
 
 function App() {
-    return (
-        <Router>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route
-                    path="/recipes/categories/:id"
-                    element={<AllRecipes />}
-                />
-                <Route path="/recipes/new" element={<CreateRecipe />} />
-                <Route path="/recipes/:id" element={<Recipe />} />
-                <Route path="/recipes/:id/edit" element={<EditRecipe />} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <Router>
+      <Nav />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/recipes/new" element={<CreateRecipe />} />
+        <Route path="/recipes/:id/edit" element={<EditRecipe />} />
+        <Route path="/recipes/:id" element={<Recipe />} />
+        <Route path="/recipes/categories/:id" element={<AllRecipes />} />
+      </Routes>
+    </Router>
+  );
 }
 
 export default App;

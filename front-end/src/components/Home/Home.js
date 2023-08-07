@@ -1,39 +1,47 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { getAllCategories } from "../Api/Api";
-function Home() {
-    const [categories, setCategories] = useState([]);
-    useEffect(() => {
-        fetchCategories();
-    }, []);
-    const fetchCategories = async () => {
-        try {
-            //const response = await axios.get(url + "/bookmarks/" + id);
-            const response = await getAllCategories();
-            const data = response.data;
-            setCategories(data);
-        } catch (error) {
-            console.error("Error fetching categories:", error);
-        }
-    };
+import React, { useEffect, useState } from "react";
+import axios from "axios"; // Assuming you have installed axios, if not, run "npm install axios" first.
 
-    return (
-        <div>
-            <ul>
-                {categories &&
-                    categories.map((category) => {
-                        return (
-                            <li key={category.id}>
-                                {category.category_name} -{" "}
-                                <Link to={`/recipes/categories/${category.id}`}>
-                                    see category
-                                </Link>
-                            </li>
-                        );
-                    })}
-            </ul>
-        </div>
-    );
+function Home() {
+  const [recipes, setRecipes] = useState([]);
+
+  useEffect(() => {
+    // Fetch the data from the URL on component mount
+    axios.get("http://localhost:3001/recipes").then((response) => {
+      setRecipes(response.data);
+    });
+  }, []);
+
+  return (
+    <div className="container mt-4">
+      <h1 className="m-5">All Recipes</h1>
+      <div className="row">
+        {recipes.map((recipe) => (
+          <div className="col-md-4 mb-4" key={recipe.id}>
+            <div className="card" style={{ width: "18rem" }}>
+              {/* <img
+                src={recipe.image}
+                className="card-img-top"
+                alt={recipe.name}
+              /> */}
+              <div className="card-body">
+                <h5 className="card-title">{recipe.name}</h5>
+                <p className="card-text">Category: {recipe.origin}</p>
+                <p className="card-text">
+                  Cook Time: {recipe.cook_time} minutes
+                </p>
+                <a
+                  href="#"
+                  className="btn btn-success d-flex justify-content-center"
+                >
+                  View More
+                </a>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default Home;
