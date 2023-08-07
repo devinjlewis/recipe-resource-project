@@ -10,7 +10,7 @@ CREATE TABLE categories(
 
 CREATE TABLE recipes(
     id SERIAL PRIMARY KEY,
-    name varchar(30) NOT NULL,
+    name varchar(50) NOT NULL,
     ingredients text NOT NULL,
     prep_time integer,
     cook_time integer,
