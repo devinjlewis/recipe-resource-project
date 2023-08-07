@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getAllRecipes } from "../Api/Api";
+import { getAllRecipesWCategory } from "../Api/Api";
 
 function Home() {
     const [recipes, setRecipes] = useState([]);
     const fetchData = async () => {
-        const recipe = await getAllRecipes();
+        const recipe = await getAllRecipesWCategory();
 
         setRecipes(recipe.data);
     };
@@ -36,7 +36,7 @@ function Home() {
                                         {recipe.name}
                                     </h5>
                                     <p className="card-text">
-                                        Category: {recipe.origin}
+                                        Category: {recipe.category_name}
                                     </p>
                                     <p className="card-text">
                                         Cook Time: {recipe.cook_time} minutes

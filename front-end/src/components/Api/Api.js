@@ -10,6 +10,16 @@ async function getAllRecipes() {
         return;
     }
 }
+async function getAllRecipesWCategory() {
+    try {
+        let result = await Axios.get("/recipes/wcategories");
+
+        return result;
+    } catch (e) {
+        //alert(e.response.data.error);
+        return;
+    }
+}
 
 async function getRecipeById(id) {
     try {
@@ -82,4 +92,5 @@ export {
     createRecipe,
     getAllCategories,
     getRecipeByCategoryId,
+    getAllRecipesWCategory,
 };

@@ -7,8 +7,7 @@ const {
     createRecipe,
     deleteRecipe,
     updateRecipe,
-    getAllCategories,
-    getRecipesByCategoryId,
+    getAllRecipesWCategory,
 } = require("../queries/recipes");
 
 const {
@@ -23,6 +22,10 @@ router.use("/categories", categoriesController);
 //GET-All
 router.get("/", async (req, res) => {
     const allRecipes = await getAllRecipes();
+    res.json(allRecipes);
+});
+router.get("/wcategories", async (req, res) => {
+    const allRecipes = await getAllRecipesWCategory();
     res.json(allRecipes);
 });
 

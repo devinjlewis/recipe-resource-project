@@ -9,6 +9,16 @@ const getAllRecipes = async () => {
         return error;
     }
 };
+const getAllRecipesWCategory = async () => {
+    try {
+        const allRecipes = await db.any(
+            "SELECT r.*,c.* FROM recipes r LEFT JOIN categories c ON c.id=r.category_id"
+        );
+        return allRecipes;
+    } catch (error) {
+        return error;
+    }
+};
 
 //GET ONE BY :ID
 const getSingleRecipe = async (id) => {
@@ -160,4 +170,5 @@ module.exports = {
     updateRecipe,
     getAllCategories,
     getRecipesByCategoryId,
+    getAllRecipesWCategory,
 };
