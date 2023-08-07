@@ -14,7 +14,6 @@ function EditRecipe() {
         ingredients: "",
         prep_time: "",
         cook_time: "",
-        prep_time: "",
         serving_size: "",
         date: "",
         instructions: "",
@@ -28,22 +27,6 @@ function EditRecipe() {
 
     const navigate = useNavigate();
 
-    async function fetchData() {
-        try {
-            let res = await getRecipeById(id);
-            setFormData(res.data);
-        } catch (e) {
-            console.log(e);
-        }
-    }
-    async function fetchCategories() {
-        try {
-            let res = await getAllCategories();
-            setCategories(res.data);
-        } catch (e) {
-            console.log(e);
-        }
-    }
     function categoriesDropdown(id) {
         return (
             <select
@@ -83,9 +66,25 @@ function EditRecipe() {
     };
 
     useEffect(() => {
+        async function fetchData() {
+            try {
+                let res = await getRecipeById(id);
+                setFormData(res.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
+        async function fetchCategories() {
+            try {
+                let res = await getAllCategories();
+                setCategories(res.data);
+            } catch (e) {
+                console.log(e);
+            }
+        }
         fetchData();
         fetchCategories();
-    }, []);
+    }, [id]);
     const handleSubmit = async (event) => {
         event.preventDefault();
 
