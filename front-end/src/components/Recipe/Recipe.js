@@ -38,6 +38,8 @@ function Recipe() {
                     <div className="col-lg-6 mx-auto">
                         <header className="text-center pb-5 ">
                             <h1 className="h2 m-3">Recipe Details</h1>
+                            <span className="fw-bold">Ingredients:</span>{" "}
+                            <p>{recipe.ingredients}</p>
                             <p>Unlock the flavors by following this recipe.</p>
                         </header>
                     </div>
