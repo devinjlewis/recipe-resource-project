@@ -7,7 +7,7 @@ import Search from "../Search/Search";
 function Nav() {
   return (
     <header className="navbar navbar-expand-lg navbar-light">
-      <div className="container">
+      <div className="container ">
         <Link className="navbar-brand" to="/">
           <img src={Logo} width="200" alt="Logo" />
         </Link>
