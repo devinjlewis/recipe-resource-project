@@ -1,21 +1,22 @@
 /* Search.css */
 .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px;
 }
 
 .input-group {
-    max-width: 700px; /* Set a maximum width for the search bar */
+  width: 700px;
+  margin-right: 30%;
 }
 
 .form-control {
-    border-radius: 30px; /* Adjust the value for the desired level of rounding */
+  border-radius: 30px;
 }
 
 @media (max-width: 768px) {
-    .custom-search {
-        margin-bottom: 10px; /* Add some spacing at the bottom for smaller screens */
-    }
+  .custom-search {
+    margin-bottom: 10px;
+  }
 }
