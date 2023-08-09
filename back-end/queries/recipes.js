@@ -153,7 +153,7 @@ const getAllCategories = async () => {
 const getRecipesByCategoryId = async (categoryId) => {
     try {
         const recipesByCategory = await db.any(
-            "SELECT r.* FROM recipes r JOIN categories c ON r.category_id = c.id WHERE c.id = $1",
+            "SELECT r.*,c.category_name FROM recipes r JOIN categories c ON r.category_id = c.id WHERE c.id = $1",
             categoryId
         );
         return recipesByCategory;

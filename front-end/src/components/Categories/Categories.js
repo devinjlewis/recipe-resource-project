@@ -11,7 +11,6 @@ function Categories() {
 
   const fetchCategories = async () => {
     try {
-      //const response = await axios.get(url + "/bookmarks/" + id);
       const response = await getAllCategories();
       const data = response.data;
       setCategories(data);
@@ -31,25 +30,24 @@ function Categories() {
   }
 
   return (
-    <div className="row ">
-      <div className="col-md-3 ">
-        <div className="list-group">
-          {categories &&
-            categories.map((category) => {
-              return (
-                <div className="m-4 card ">
-                  <Link
-                    key={category.id}
-                    to={`/recipes/categories/${category.id}`}
-                    className="list-group-item list-group-item-action"
-                  >
-                    {category.category_name}
-                  </Link>
-                </div>
-              );
-            })}
-        </div>
+    <div className="nav-item ">
+      <div className="m-5 list-group-item">
+        <Link to={`/`} className="list-group-item ">
+          All Recipes
+        </Link>
       </div>
+      {categories &&
+        categories.map((category) => (
+          <div className="m-5 list-group-item">
+            <Link
+              key={category.id}
+              to={`/recipes/categories/${category.id}`}
+              className="list-group-item "
+            >
+              {category.category_name}
+            </Link>
+          </div>
+        ))}
     </div>
   );
 }
