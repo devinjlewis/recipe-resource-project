@@ -20,7 +20,6 @@ function Recipe() {
     };
     fetchRecipe();
   }, [id]);
-
   const deleteRecipe = async (event) => {
     try {
       const confirmed = window.confirm(
@@ -53,6 +52,7 @@ function Recipe() {
           <div className="col-lg-6 mx-auto">
             <header className="text-center pb-5 ">
               <h1 className="h2 m-3">Recipe Details</h1>
+
               <p>Unlock the flavors by following this recipe.</p>
             </header>
           </div>
@@ -64,6 +64,10 @@ function Recipe() {
               <div className="blockquote-custom-icon bg-info shadow-xl custom-shadow ">
                 <i className="fa fa-quote-left text-white"></i>
               </div>
+              <div>
+                <span className="fw-bold">Ingredients:</span>{" "}
+                <p>{recipe.ingredients}</p>
+              </div>
               <p
                 className="mb-0 mt-2 font-italic"
                 style={{ whiteSpace: "pre-line" }}
@@ -71,6 +75,7 @@ function Recipe() {
                 <span className="fw-bold">Instructions:</span>{" "}
                 {recipe.instructions}
               </p>
+
               <p className="mb-0 mt-2 font-italic">
                 <span className="fw-bold">Origin:</span> {recipe.origin}
               </p>
@@ -104,7 +109,12 @@ function Recipe() {
           >
             Edit
           </button>
-          <button className="btn btn-danger m-3" onClick={() => deleteRecipe()}>
+          <button
+            className="btn btn-danger m-3"
+            onClick={() => {
+              deleteRecipe();
+            }}
+          >
             Delete
           </button>
         </div>
