@@ -52,7 +52,7 @@ function CreateRecipe() {
 
     return (
         <div>
-            <div className="container card my-5">
+            <div className="container card my-5 mx-auto w-75">
                 <h1 className="m-5 d-flex justify-content-center">
                     Create Recipe
                 </h1>

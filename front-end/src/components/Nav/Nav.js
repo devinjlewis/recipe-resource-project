@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import Logo from "../resources/logo.png";
-import Search from "../Search/Search";
 
 function Nav() {
     return (
@@ -20,9 +19,6 @@ function Nav() {
                 >
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="custom-search">
-                    <Search />
-                </div>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">

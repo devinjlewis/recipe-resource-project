@@ -76,8 +76,8 @@ function EditRecipe() {
         }
     };
     return (
-        <div className="container card my-5">
-            <h1 className="m-5 d-flex justify-content-center align-items-center">
+        <div className="card my-5 mx-auto w-75">
+            <h1 className="m-5 d-flex justify-content-center">
                 Manage this recipe
             </h1>
             <form className="m-5" onSubmit={handleSubmit}>
@@ -174,7 +174,6 @@ function EditRecipe() {
                 <div className="mb-4">
                     <h4 className="form-h4"> Instructions:</h4>
                     <textarea
-                        cols="50"
                         rows="9"
                         type="text"
                         className="form-control"
