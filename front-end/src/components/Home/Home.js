@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getAllRecipesWCategory } from "../Api/Api";
 import "./Home.css";
-import Categories from "../Categories/Categories";
-import Sidebar from "../Sidebar/Sidebar";
 function Home() {
     const [recipes, setRecipes] = useState([]);
     const fetchData = async () => {

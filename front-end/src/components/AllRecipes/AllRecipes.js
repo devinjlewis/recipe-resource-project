@@ -1,11 +1,9 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getRecipeByCategoryId } from "../Api/Api";
-import Categories from "../Categories/Categories";
 function AllRecipes() {
     const { id } = useParams();
     const [recipes, setRecipes] = useState([]);
-    const navigate = useNavigate();
     useEffect(() => {
         const fetchRecipes = async () => {
             try {
