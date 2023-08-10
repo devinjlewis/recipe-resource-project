@@ -160,7 +160,7 @@ function CreateRecipe() {
                     </div>{" "}
                     <div className="mb-4">
                         <h4 className="form-h4">
-                            <label>Date: </label>
+                            <label htmlFor="date">Date: </label>
                         </h4>
                         <input
                             id="date"
