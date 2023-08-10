@@ -1,5 +1,5 @@
 header {
-  background-color: #acbe93;
+  background-color: #acbe93e3;
 }
 
 .navbar-nav .nav-link {
@@ -10,8 +10,4 @@ header {
 .navbar-nav .nav-link:hover {
   text-decoration: none;
   color: #11450e;
-}
-
-.custom-search {
-  margin-left: 150px;
 }
