@@ -82,8 +82,11 @@ function EditRecipe() {
             </h1>
             <form className="m-5" onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <h4 className="form-h4">Name:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="name">Name: </label>
+                    </h4>
                     <input
+                        id="name"
                         type="text"
                         name="name"
                         className="form-control"
@@ -97,8 +100,12 @@ function EditRecipe() {
                     />
                 </div>{" "}
                 <div className="mb-4">
-                    <h4 className="form-h4">Ingredients:</h4>
+                    <h4 className="form-h4">
+                        {" "}
+                        <label htmlFor="ingredients">Ingredients: </label>
+                    </h4>
                     <input
+                        id="ingredients"
                         type="text"
                         name="ingredients"
                         className="form-control"
@@ -112,8 +119,11 @@ function EditRecipe() {
                     />
                 </div>{" "}
                 <div className="mb-4">
-                    <h4 className="form-h4">Prep Time:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="ingredients">Prep Time:</label>
+                    </h4>
                     <input
+                        id="prep_time"
                         type="text"
                         name="prep_time"
                         className="form-control"
@@ -127,8 +137,11 @@ function EditRecipe() {
                     />
                 </div>{" "}
                 <div className="mb-4">
-                    <h4 className="form-h4">Cook Time:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="cook_time">Cook Time:</label>
+                    </h4>
                     <input
+                        id="cook_time"
                         type="text"
                         name="cook_time"
                         className="form-control"
@@ -142,8 +155,11 @@ function EditRecipe() {
                     />
                 </div>{" "}
                 <div className="mb-4">
-                    <h4 className="form-h4">Serving Size:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="serving_size">Serving Size:</label>
+                    </h4>
                     <input
+                        id="serving_size"
                         type="text"
                         name="serving_size"
                         className="form-control"
@@ -157,8 +173,11 @@ function EditRecipe() {
                     />
                 </div>{" "}
                 <div className="mb-4">
-                    <h4 className="form-h4"> Date: </h4>
+                    <h4 className="form-h4">
+                        <label>Date: </label>
+                    </h4>
                     <input
+                        id="date"
                         type="date"
                         name="date"
                         className="form-control"
@@ -172,8 +191,11 @@ function EditRecipe() {
                     />
                 </div>{" "}
                 <div className="mb-4">
-                    <h4 className="form-h4"> Instructions:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="instructions">Instructions:</label>
+                    </h4>
                     <textarea
+                        id="instructions"
                         rows="9"
                         type="text"
                         className="form-control"
@@ -188,8 +210,11 @@ function EditRecipe() {
                     ></textarea>
                 </div>
                 <div className="mb-4">
-                    <h4 className="form-h4"> Origin:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="origin">Origin:</label>
+                    </h4>
                     <input
+                        id="origin"
                         type="text"
                         name="origin"
                         className="form-control"
@@ -203,9 +228,12 @@ function EditRecipe() {
                     />
                 </div>
                 <div className="mb-4">
-                    <h4 className="form-h4">Category:</h4>
+                    <h4 className="form-h4">
+                        <label htmlFor="category_id">Category:</label>
+                    </h4>
                     <div className="mb-4">
                         <select
+                            id="category_id"
                             name="category_id"
                             className="form-select form-control"
                             value={formData.category_id}
@@ -230,9 +258,12 @@ function EditRecipe() {
                     </div>
                 </div>
                 <div className="mb-4">
-                    <h4 className="form-h4 mx-2"> Favorite:</h4>
+                    <h4 className="form-h4 mx-2">
+                        <label htmlFor="is_favorite">Is Favorite:</label>
+                    </h4>
 
                     <input
+                        id="is_favorite"
                         type="checkbox"
                         name="is_favorite"
                         className="form-check-input"

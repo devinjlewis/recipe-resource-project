@@ -57,13 +57,15 @@ function CreateRecipe() {
                     Create Recipe
                 </h1>
                 <form className="m-5" onSubmit={handleSubmit}>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Name</h4>
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="name">Name: </label>
+                        </h4>
                         <input
+                            id="name"
                             type="text"
                             name="name"
                             className="form-control"
-                            required
                             value={formData.name}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
@@ -72,14 +74,17 @@ function CreateRecipe() {
                                 }))
                             }
                         />
-                    </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Ingredients</h4>
+                    </div>{" "}
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            {" "}
+                            <label htmlFor="ingredients">Ingredients: </label>
+                        </h4>
                         <input
+                            id="ingredients"
                             type="text"
                             name="ingredients"
                             className="form-control"
-                            required
                             value={formData.ingredients}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
@@ -88,14 +93,16 @@ function CreateRecipe() {
                                 }))
                             }
                         />
-                    </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Prep Time</h4>
+                    </div>{" "}
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="ingredients">Prep Time:</label>
+                        </h4>
                         <input
-                            type="number"
+                            id="prep_time"
+                            type="text"
                             name="prep_time"
                             className="form-control"
-                            required
                             value={formData.prep_time}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
@@ -104,14 +111,16 @@ function CreateRecipe() {
                                 }))
                             }
                         />
-                    </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Cook Time</h4>
+                    </div>{" "}
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="cook_time">Cook Time:</label>
+                        </h4>
                         <input
-                            type="number"
+                            id="cook_time"
+                            type="text"
                             name="cook_time"
                             className="form-control"
-                            required
                             value={formData.cook_time}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
@@ -120,14 +129,16 @@ function CreateRecipe() {
                                 }))
                             }
                         />
-                    </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Serving Size</h4>
+                    </div>{" "}
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="serving_size">Serving Size:</label>
+                        </h4>
                         <input
-                            type="number"
+                            id="serving_size"
+                            type="text"
                             name="serving_size"
                             className="form-control"
-                            required
                             value={formData.serving_size}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
@@ -136,15 +147,17 @@ function CreateRecipe() {
                                 }))
                             }
                         />
-                    </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Date</h4>
+                    </div>{" "}
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label>Date: </label>
+                        </h4>
                         <input
+                            id="date"
                             type="date"
                             name="date"
                             className="form-control"
-                            required
-                            value={formData.date}
+                            value={formData.date.slice(0, 10)}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
                                     ...prevFormData,
@@ -152,16 +165,36 @@ function CreateRecipe() {
                                 }))
                             }
                         />
-                    </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Instructions</h4>
+                    </div>{" "}
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="instructions">Instructions:</label>
+                        </h4>
                         <textarea
-                            name="instructions"
+                            id="instructions"
+                            rows="9"
+                            type="text"
                             className="form-control"
-                            cols="20"
-                            rows="20"
-                            required
                             value={formData.instructions}
+                            name="instructions"
+                            onChange={(e) =>
+                                setFormData((prevFormData) => ({
+                                    ...prevFormData,
+                                    [e.target.name]: e.target.value,
+                                }))
+                            }
+                        ></textarea>
+                    </div>
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="origin">Origin:</label>
+                        </h4>
+                        <input
+                            id="origin"
+                            type="text"
+                            name="origin"
+                            className="form-control"
+                            value={formData.origin}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
                                     ...prevFormData,
@@ -170,10 +203,13 @@ function CreateRecipe() {
                             }
                         />
                     </div>
-                    <div className="mb-3">
-                        <h4 className="form-h4">Category:</h4>
+                    <div className="mb-4">
+                        <h4 className="form-h4">
+                            <label htmlFor="category_id">Category:</label>
+                        </h4>
                         <div className="mb-4">
                             <select
+                                id="category_id"
                                 name="category_id"
                                 className="form-select form-control"
                                 value={formData.category_id}
@@ -197,12 +233,17 @@ function CreateRecipe() {
                             </select>
                         </div>
                     </div>
-                    <div className="mb-3">
-                        <h4 className="form-title">Is Favorite</h4>
+                    <div className="mb-4">
+                        <h4 className="form-h4 mx-2">
+                            <label htmlFor="is_favorite">Is Favorite:</label>
+                        </h4>
+
                         <input
+                            id="is_favorite"
                             type="checkbox"
                             name="is_favorite"
-                            value={formData.is_favorite}
+                            className="form-check-input"
+                            checked={formData.is_favorite}
                             onChange={(e) =>
                                 setFormData((prevFormData) => ({
                                     ...prevFormData,
@@ -211,28 +252,21 @@ function CreateRecipe() {
                             }
                         />
                     </div>
-                    <div className="mb-3">
-                        <h4 className="form-title">Origin</h4>
-                        <input
-                            type="text"
-                            name="origin"
-                            className="form-control"
-                            required
-                            value={formData.origin}
-                            onChange={(e) =>
-                                setFormData((prevFormData) => ({
-                                    ...prevFormData,
-                                    [e.target.name]: e.target.value,
-                                }))
-                            }
-                        />
+                    <div className="button-container d-flex justify-content-center m-3 mb-5">
+                        <button type="submit" className="btn btn-primary mx-3">
+                            Submit
+                        </button>
+                        <button
+                            className="btn btn-success mx-3"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigate(-1);
+                            }}
+                        >
+                            Go Back
+                        </button>
                     </div>
                 </form>
-            </div>
-            <div className="d-flex justify-content-center mb-5 ">
-                <button type="submit" className="btn btn-primary">
-                    Submit
-                </button>
             </div>
         </div>
     );
